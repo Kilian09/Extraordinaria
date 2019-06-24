@@ -19,4 +19,5 @@ public class Repository implements RepositoryContract {
     }
     return INSTANCE;
   }
+
 }
