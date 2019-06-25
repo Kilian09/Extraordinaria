@@ -1,14 +1,14 @@
 package es.ulpgc.alu.garcia106.kilian.extraordinaria.data;
 
-public class Item {
+public class Letter {
 
   private int id;
 
-  private String letter;
+  private char letter;
 
-  public Item(int id,String letter){
+  public Letter(int id){
     this.id = id;
-    this.letter = letter;
+    this.letter = 'A';
   }
 
   public int getId() {
@@ -19,11 +19,12 @@ public class Item {
     this.id = id;
   }
 
-  public String getLetter() {
+  public char getLetter() {
     return letter;
   }
 
-  public void setLetter(String letter) {
+  public void setLetter(char letter) {
     this.letter = letter;
   }
+
 }

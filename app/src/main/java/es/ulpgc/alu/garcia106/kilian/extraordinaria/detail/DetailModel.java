@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.FragmentActivity;
 
 import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Repository;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.RepositoryContract;
 
 public class DetailModel implements DetailContract.Model {
 
@@ -24,4 +25,5 @@ public class DetailModel implements DetailContract.Model {
     // Log.e(TAG, "fetchData()");
     return "Hello";
   }
+
 }

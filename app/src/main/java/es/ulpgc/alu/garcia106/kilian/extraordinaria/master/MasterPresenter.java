@@ -1,11 +1,9 @@
 package es.ulpgc.alu.garcia106.kilian.extraordinaria.master;
 
-import android.util.Log;
-
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Item;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Letter;
 import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.RepositoryContract;
 import es.ulpgc.alu.garcia106.kilian.extraordinaria.detail.DetailState;
 
@@ -55,11 +53,11 @@ public class MasterPresenter implements MasterContract.Presenter {
       viewModel.data = data;
     }
 */
-    if (viewModel.items == null) {
+    if (viewModel.letters == null) {
       model.LoadItemList(new RepositoryContract.LoadItemListCallback() {
         @Override
-        public void setItemList(List<Item> itemList) {
-          viewModel.items = itemList;
+        public void setItemList(List<Letter> letterList) {
+          viewModel.letters = letterList;
         }
       });
     }
@@ -72,17 +70,17 @@ public class MasterPresenter implements MasterContract.Presenter {
   public void onAddButtonClicked() {
     model.addNewItem(new RepositoryContract.OnAddNewItemCallback() {
       @Override
-      public void setItemList(List<Item> itemList) {
-        viewModel.items = itemList;
+      public void setItemList(List<Letter> letterList) {
+        viewModel.letters = letterList;
         view.get().displayData(viewModel);
       }
     });
   }
 
   @Override
-  public void onListItemClicked(Item item) {
+  public void onListItemClicked(Letter letter) {
     DetailState state = new DetailState();
-    state.item = item;
+    state.letter = letter;
     router.passDataToDetailScreen(state);
     router.navigateToDetailScreen();
   }

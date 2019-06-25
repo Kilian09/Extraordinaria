@@ -3,6 +3,10 @@ package es.ulpgc.alu.garcia106.kilian.extraordinaria.detail;
 import android.util.Log;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
+
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Number;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.RepositoryContract;
 
 public class DetailPresenter implements DetailContract.Presenter {
 
@@ -50,10 +54,11 @@ public class DetailPresenter implements DetailContract.Presenter {
       viewModel.data = data;
     }
 */
-    // update the view
-    view.get().displayData(viewModel);
 
+
+      // update the view
+      view.get().displayData(viewModel);
+
+    }
   }
 
-
-}

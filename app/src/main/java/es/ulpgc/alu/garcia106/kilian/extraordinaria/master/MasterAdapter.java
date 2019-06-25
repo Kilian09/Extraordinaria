@@ -10,30 +10,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.ulpgc.alu.garcia106.kilian.extraordinaria.R;
-import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Item;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Letter;
 
 public class MasterAdapter extends RecyclerView.Adapter<MasterAdapter.ViewHolder> {
 
-  private List<Item> items;
+  private List<Letter> letters;
   private final View.OnClickListener clickListener;
 
   public MasterAdapter(View.OnClickListener clickListener) {
-    this.items = new ArrayList<>();
+    this.letters = new ArrayList<>();
     this.clickListener = clickListener;
   }
 
-  public void addItem(Item item) {
-    items.add(item);
+  public void addItem(Letter letter) {
+    letters.add(letter);
     notifyDataSetChanged();
   }
 
-  public void addItems(List<Item> items) {
-    items.addAll(items);
+  public void addItems(List<Letter> letters) {
+    letters.addAll(letters);
     notifyDataSetChanged();
   }
 
-  public void setItems(List<Item> items) {
-    items = items;
+  public void setLetters(List<Letter> letters) {
+    this.letters = letters;
     notifyDataSetChanged();
   }
 
@@ -47,16 +47,16 @@ public class MasterAdapter extends RecyclerView.Adapter<MasterAdapter.ViewHolder
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    holder.itemView.setTag(items.get(position));
+    holder.itemView.setTag(letters.get(position));
     holder.itemView.setOnClickListener(clickListener);
 
-    String letter = items.get(position).getLetter();
-    holder.letterText.setText(letter);
+    char  letter = letters.get(position).getLetter();
+    holder.letterText.setText(Character.toString(letter));
   }
 
   @Override
   public int getItemCount() {
-    return items.size();
+    return letters.size();
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {
