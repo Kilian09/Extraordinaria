@@ -3,6 +3,11 @@ package es.ulpgc.alu.garcia106.kilian.extraordinaria.master;
 import android.util.Log;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
+
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Item;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.RepositoryContract;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.detail.DetailState;
 
 public class MasterPresenter implements MasterContract.Presenter {
 
@@ -50,10 +55,35 @@ public class MasterPresenter implements MasterContract.Presenter {
       viewModel.data = data;
     }
 */
+    if (viewModel.items == null) {
+      model.LoadItemList(new RepositoryContract.LoadItemListCallback() {
+        @Override
+        public void setItemList(List<Item> itemList) {
+          viewModel.items = itemList;
+        }
+      });
+    }
     // update the view
     view.get().displayData(viewModel);
 
   }
 
+  @Override
+  public void onAddButtonClicked() {
+    model.addNewItem(new RepositoryContract.OnAddNewItemCallback() {
+      @Override
+      public void setItemList(List<Item> itemList) {
+        viewModel.items = itemList;
+        view.get().displayData(viewModel);
+      }
+    });
+  }
 
+  @Override
+  public void onListItemClicked(Item item) {
+    DetailState state = new DetailState();
+    state.item = item;
+    router.passDataToDetailScreen(state);
+    router.navigateToDetailScreen();
+  }
 }

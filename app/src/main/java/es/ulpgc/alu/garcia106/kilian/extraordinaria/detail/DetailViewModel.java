@@ -1,6 +1,10 @@
 package es.ulpgc.alu.garcia106.kilian.extraordinaria.detail;
 
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Item;
+
 public class DetailViewModel {
 
-  public String data;
+  public Item item;
+
+  public int counter;
 }

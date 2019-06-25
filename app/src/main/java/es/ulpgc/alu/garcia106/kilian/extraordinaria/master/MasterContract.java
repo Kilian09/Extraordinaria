@@ -2,6 +2,10 @@ package es.ulpgc.alu.garcia106.kilian.extraordinaria.master;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.Item;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.data.RepositoryContract;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.detail.DetailState;
+
 interface MasterContract {
 
   interface View {
@@ -18,16 +22,24 @@ interface MasterContract {
     void injectRouter(Router router);
 
     void fetchData();
+
+    void onAddButtonClicked();
+
+    void onListItemClicked(Item item);
   }
 
   interface Model {
     String fetchData();
+
+    void addNewItem(RepositoryContract.OnAddNewItemCallback callback);
+
+    void LoadItemList(RepositoryContract.LoadItemListCallback callback);
   }
 
   interface Router {
-    void navigateToNextScreen();
+    void navigateToDetailScreen();
 
-    void passDataToNextScreen(MasterState state);
+    void passDataToDetailScreen(DetailState state);
 
     MasterState getDataFromPreviousScreen();
   }

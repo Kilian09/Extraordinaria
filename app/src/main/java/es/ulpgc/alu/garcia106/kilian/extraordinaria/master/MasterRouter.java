@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.Context;
 
 import es.ulpgc.alu.garcia106.kilian.extraordinaria.app.AppMediator;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.detail.DetailActivity;
+import es.ulpgc.alu.garcia106.kilian.extraordinaria.detail.DetailState;
 
 public class MasterRouter implements MasterContract.Router {
 
@@ -17,15 +19,15 @@ public class MasterRouter implements MasterContract.Router {
   }
 
   @Override
-  public void navigateToNextScreen() {
+  public void navigateToDetailScreen() {
     Context context = mediator.getApplicationContext();
-    Intent intent = new Intent(context, MasterActivity.class);
+    Intent intent = new Intent(context, DetailActivity.class);
     context.startActivity(intent);
   }
 
   @Override
-  public void passDataToNextScreen(MasterState state) {
-    mediator.setMasterState(state);
+  public void passDataToDetailScreen(DetailState state) {
+    mediator.setDetailState(state);
   }
 
   @Override
